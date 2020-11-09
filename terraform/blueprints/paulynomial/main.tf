@@ -41,10 +41,6 @@ provider digitalocean {
   token = data.sops_file.digitalocean_secrets.data.api_token
 }
 
-output meow {
-  value = data.sops_file.ssh_secrets.data.private_key
-}
-
 # Encryption
 provider tls {
 }
