@@ -16,8 +16,7 @@ jobs:
         uses: github/super-linter@v3
         env:
           DEFAULT_BRANCH: main
-          FILTER_REGEX_EXCLUDE: userdata_quickstart_node.template
-          FILTER_REGEX_EXCLUDE: userdata_rancher_server.template
+          FILTER_REGEX_EXCLUDE: userdata_quickstart_node.template|userdata_rancher_server.template
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_BASH: true
           VALIDATE_JSON: true
