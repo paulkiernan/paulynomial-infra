@@ -1,19 +1,19 @@
-Paul Kiernan's Personal Compute Infrastructure
-==============================================
+# Personal Compute Infrastructure
 
-It's the internet.
+[![GitHub Super-Linter](https://github.com/paulkiernan/paulynomial-infra/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
-Requirements
-------------
+It's in the cloud.
 
-* [ASDF](https://asdf-vm.com/#/)
+## Requirements
+
+* [ASDF](https://asdf-vm.com/)
 * [DigitalOcean](https://www.digitalocean.com/)
 * [GPG private key](https://keybase.io/paulkiernan)
 * [SOPS](https://github.com/mozilla/sops)
 * [Terraform](https://www.terraform.io/)
 
-```console
-$ yay -S sops git-secret
+```bash
+yay -S sops
 ```
 
 Secrets are generally managed by SOPS.
