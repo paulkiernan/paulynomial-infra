@@ -11,6 +11,7 @@ docker run \
     -e OUTPUT_DETAILS=detailed \
     -e RUN_LOCAL=true \
     -e VALIDATE_ALL_CODEBASE=true \
+    -e VALIDATE_BASH=true \
     -e VALIDATE_JSON=true \
     -e VALIDATE_MARKDOWN=true \
     -e VALIDATE_TERRAFORM=true \
