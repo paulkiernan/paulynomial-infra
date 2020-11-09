@@ -15,7 +15,7 @@ variable "prefix" {
 variable "droplet_size" {
   type        = string
   description = "Droplet size used for all droplets"
-  default     = "s-1vcpu-2gb"
+  default     = "s-2vcpu-4gb"
 }
 
 variable "docker_version" {
@@ -27,28 +27,32 @@ variable "docker_version" {
 variable "rke_kubernetes_version" {
   type        = string
   description = "Kubernetes version to use for Rancher server RKE cluster"
-  default     = "v1.18.8-rancher1-1"
+  default     = "v1.19.3-rancher1-2"
 }
 
 variable "workload_kubernetes_version" {
   type        = string
   description = "Kubernetes version to use for managed workload cluster"
-  default     = "v1.17.11-rancher1-1"
+  default     = "v1.18.10-rancher1-2"
 }
 
 variable "cert_manager_version" {
   type        = string
   description = "Version of cert-manager to install alongside Rancher (format: 0.0.0)"
-  default     = "0.15.1"
+  default     = "1.0.4"
 }
 
 variable "rancher_version" {
   type        = string
   description = "Rancher server version (format: v0.0.0)"
-  default     = "v2.4.8"
+  default     = "v2.5.2"
 }
 
 # Local variables used to reduce repetition
 locals {
   node_username = "root"
+}
+
+locals {
+  number_workload_nodes = 1
 }

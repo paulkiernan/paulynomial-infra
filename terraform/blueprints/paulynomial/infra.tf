@@ -1,7 +1,7 @@
 # DO infrastructure resources
 
 # Temporary key pair used for SSH accesss
-resource "digitalocean_ssh_key" "quickstart_ssh_key" {
+resource "digitalocean_ssh_key" "ssh_key" {
   name       = "${var.prefix}-droplet-ssh-key"
   public_key = data.sops_file.ssh_secrets.data.public_key
 }
@@ -12,7 +12,7 @@ resource "digitalocean_droplet" "rancher_server" {
   image              = "ubuntu-18-04-x64"
   region             = var.do_region
   size               = var.droplet_size
-  ssh_keys           = [digitalocean_ssh_key.quickstart_ssh_key.fingerprint]
+  ssh_keys           = [digitalocean_ssh_key.ssh_key.fingerprint]
   private_networking = true
 
   user_data = templatefile(
@@ -31,6 +31,7 @@ resource "digitalocean_droplet" "rancher_server" {
     ]
 
     connection {
+      timeout     = "10m"
       type        = "ssh"
       host        = self.ipv4_address
       user        = local.node_username
@@ -53,19 +54,19 @@ module "rancher_common" {
   rancher_version      = var.rancher_version
 
   rancher_server_dns = join(".", ["rancher", digitalocean_droplet.rancher_server.ipv4_address, "xip.io"])
-  admin_password     = data.sops_file.digitalocean_secrets.data.admin_password
+  admin_password     = data.sops_file.digitalocean_secrets.data.rancher_admin_password
 
   workload_kubernetes_version = var.workload_kubernetes_version
-  workload_cluster_name       = "quickstart-do-custom"
+  workload_cluster_name       = "do-cluster"
 }
 
 # DO droplet for creating a single node workload cluster
-resource "digitalocean_droplet" "quickstart_node" {
-  name               = "${var.prefix}-quickstart-node"
+resource "digitalocean_droplet" "workload_node" {
+  name               = "${var.prefix}-workload-node"
   image              = "ubuntu-18-04-x64"
   region             = var.do_region
   size               = var.droplet_size
-  ssh_keys           = [digitalocean_ssh_key.quickstart_ssh_key.fingerprint]
+  ssh_keys           = [digitalocean_ssh_key.ssh_key.fingerprint]
   private_networking = true
 
   user_data = templatefile(
@@ -85,6 +86,7 @@ resource "digitalocean_droplet" "quickstart_node" {
     ]
 
     connection {
+      timeout     = "10m"
       type        = "ssh"
       host        = self.ipv4_address
       user        = local.node_username

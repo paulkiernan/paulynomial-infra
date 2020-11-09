@@ -2,7 +2,10 @@
 
 # Install cert-manager helm chart
 resource "helm_release" "cert_manager" {
-  depends_on       = [k8s_manifest.cert_manager_crds]
+  depends_on       = [
+    k8s_manifest.cert_manager_crds
+  ]
+
   repository       = "https://charts.jetstack.io"
   name             = "cert-manager"
   chart            = "cert-manager"
@@ -23,6 +26,7 @@ resource "helm_release" "rancher_server" {
   version          = var.rancher_version
   namespace        = "cattle-system"
   create_namespace = true
+  timeout          = 3600  # Set timeout to 60 mins because tiny instance
 
   set {
     name  = "hostname"
