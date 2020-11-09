@@ -1,6 +1,6 @@
 # Personal Compute Infrastructure
 
-[![GitHub Super-Linter](https://github.com/paulkiernan/paulynomial-infra/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+![Super-Linter](https://github.com/paulkiernan/paulynomial-infra/workflows/Super-Linter/badge.svg)
 
 It's in the cloud.
 
