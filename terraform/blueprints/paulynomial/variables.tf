@@ -15,7 +15,7 @@ variable "prefix" {
 variable "droplet_size" {
   type        = string
   description = "Droplet size used for all droplets"
-  default     = "s-2vcpu-4gb"
+  default     = "s-1vcpu-2gb"
 }
 
 variable "docker_version" {
