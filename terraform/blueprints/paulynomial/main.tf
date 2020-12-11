@@ -2,6 +2,7 @@
 
 terraform {
   required_version = "~> 0.13.5"
+
   required_providers {
     local = {
       source  = "hashicorp/local"
@@ -19,6 +20,10 @@ terraform {
       source  = "hashicorp/tls"
       version = "3.0.0"
     }
+  }
+
+  backend "local" {
+    path = "../../../secrets/paulynomial.tfstate"
   }
 }
 
