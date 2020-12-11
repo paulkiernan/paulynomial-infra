@@ -1,4 +1,6 @@
 terraform/blueprints/paulynomial/.terraform
-terraform/blueprints/paulynomial/terraform.tfstate.backup
+
+*/*.tfstate.backup
+*/*.tfstate.lock.info
 
 super-linter.log
