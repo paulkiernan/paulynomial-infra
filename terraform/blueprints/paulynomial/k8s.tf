@@ -1,12 +1,5 @@
-# DO infrastructure resources
-
-# Temporary key pair used for SSH accesss
-resource "digitalocean_ssh_key" "ssh_key" {
-  name       = "${var.prefix}-droplet-ssh-key"
-  public_key = data.sops_file.ssh_secrets.data.public_key
-}
-
-# DO droplet for creating a single node RKE cluster and installing the Rancher server
+# DO droplet for creating a single node RKE cluster and installing
+# the Rancher server
 resource "digitalocean_droplet" "rancher_server" {
   name               = "${var.prefix}-rancher-server"
   image              = "ubuntu-18-04-x64"
@@ -58,6 +51,8 @@ module "rancher_common" {
 
   workload_kubernetes_version = var.workload_kubernetes_version
   workload_cluster_name       = "do-cluster"
+
+  kubeconfig_output_file_path = "../../../secrets"
 }
 
 # DO droplet for creating a single node workload cluster

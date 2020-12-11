@@ -82,3 +82,9 @@ variable "windows_prefered_cluster" {
   description = "Activate windows supports for the custom workload cluster"
   default     = false
 }
+
+variable "kubeconfig_output_file_path" {
+  type        = string
+  description = "Path to save kubeconfig files to for interacting with the RKE cluster"
+  default     = "."
+}
