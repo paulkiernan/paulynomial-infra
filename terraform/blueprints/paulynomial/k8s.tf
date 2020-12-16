@@ -65,7 +65,7 @@ resource "digitalocean_droplet" "workload_node" {
   private_networking = true
 
   user_data = templatefile(
-    join("/", [path.module, "../../modules/cloud-common/files/userdata_quickstart_node.template"]),
+    join("/", [path.module, "../../modules/cloud-common/files/userdata_node.template"]),
     {
       docker_version   = var.docker_version
       username         = local.node_username
