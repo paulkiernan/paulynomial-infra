@@ -48,11 +48,13 @@ variable "rancher_version" {
   default     = "v2.5.2"
 }
 
+variable "number_workload_nodes" {
+  type        = number
+  description = "Number of workload nodes to provision"
+  default     = 1
+}
+
 # Local variables used to reduce repetition
 locals {
   node_username = "root"
-}
-
-locals {
-  number_workload_nodes = 1
 }
