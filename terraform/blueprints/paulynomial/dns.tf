@@ -90,4 +90,5 @@ resource "digitalocean_record" "rancher_paulynomial_A" {
   type   = "A"
   name   = "rancher"
   value  = digitalocean_droplet.rancher_server.ipv4_address
+  ttl    = 300
 }
