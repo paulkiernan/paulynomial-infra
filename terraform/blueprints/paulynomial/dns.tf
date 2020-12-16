@@ -27,5 +27,12 @@ resource "digitalocean_record" "root_paulynomial_A" {
   domain = digitalocean_domain.paulynomial.name
   type   = "A"
   name   = "@"
-  value  = "104.236.6.204"
+  value  = "159.203.136.105"
+}
+
+resource "digitalocean_record" "rancher_paulynomial_A" {
+  domain = digitalocean_domain.paulynomial.name
+  type   = "A"
+  name   = "rancher"
+  value  = digitalocean_droplet.rancher_server.ipv4_address
 }
