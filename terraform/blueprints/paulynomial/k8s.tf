@@ -48,7 +48,7 @@ module "rancher_common" {
 
   rancher_server_dns = join(".", ["rancher", digitalocean_droplet.rancher_server.ipv4_address, "xip.io"])
   #rancher_server_dns = digitalocean_record.rancher_paulynomial_A.fqdn
-  admin_password     = data.sops_file.digitalocean_secrets.data.rancher_admin_password
+  admin_password = data.sops_file.digitalocean_secrets.data.rancher_admin_password
 
   workload_kubernetes_version = var.workload_kubernetes_version
   workload_cluster_name       = "do-cluster"
