@@ -92,3 +92,11 @@ resource "digitalocean_record" "rancher_paulynomial_A" {
   value  = digitalocean_droplet.rancher_server.ipv4_address
   ttl    = 300
 }
+
+resource "digitalocean_record" "new_paulynomial_A" {
+  domain = digitalocean_domain.paulynomial.name
+  type   = "A"
+  name   = "new"
+  value  = digitalocean_droplet.workload_node.ipv4_address
+  ttl    = 300
+}
