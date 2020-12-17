@@ -78,19 +78,19 @@ resource "digitalocean_record" "keybase_verification_paulynomial_TXT" {
 }
 
 # Apps
-resource "digitalocean_record" "root_paulynomial_A" {
-  domain = digitalocean_domain.paulynomial.name
-  type   = "A"
-  name   = "@"
-  value  = "159.203.136.105"
-}
-
 resource "digitalocean_record" "rancher_paulynomial_A" {
   domain = digitalocean_domain.paulynomial.name
   type   = "A"
   name   = "rancher"
   value  = digitalocean_droplet.rancher_server.ipv4_address
   ttl    = 300
+}
+
+resource "digitalocean_record" "root_paulynomial_A" {
+  domain = digitalocean_domain.paulynomial.name
+  type   = "A"
+  name   = "@"
+  value  = digitalocean_droplet.workload_node.ipv4_address
 }
 
 resource "digitalocean_record" "wildcard_paulynomial_A" {
