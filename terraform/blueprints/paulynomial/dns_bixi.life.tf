@@ -27,7 +27,7 @@ resource "digitalocean_record" "root_bixi_A" {
   domain = digitalocean_domain.bixi.name
   type   = "A"
   name   = "@"
-  value  = "107.170.23.231"
+  value  = digitalocean_droplet.workload_node.ipv4_address
 }
 
 resource "digitalocean_record" "wildcard_bixi_A" {
