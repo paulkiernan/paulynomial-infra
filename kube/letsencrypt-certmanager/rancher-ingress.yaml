@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/issuer: letsencrypt-prod
+    cert-manager.io/issuer-kind: Issuer
+    meta.helm.sh/release-name: rancher
+    meta.helm.sh/release-namespace: cattle-system
+  name: 'rancher.paulynomial.com'
+  namespace: cattle-system
+spec:
+  rules:
+    - host: rancher.paulynomial.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: rancher
+                port:
+                  number: 80
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - rancher.paulynomial.com
+      secretName: rancher-ingress-prod-tls

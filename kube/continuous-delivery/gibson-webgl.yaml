@@ -1,0 +1,18 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: gibson-webgl
+  annotations:
+    field.cattle.io/description: Hack the Gibson and take down DaVinci
+  namespace: fleet-default
+spec:
+  branch: main
+  clientSecretName: null
+  paths:
+    - /k8s
+  repo: https://github.com/paulkiernan/gibson-webgl
+  targets:
+    - clusterSelector:
+        matchLabels:
+          management.cattle.io/cluster-name: c-gzcnw
+type: fleet.cattle.io.gitrepo

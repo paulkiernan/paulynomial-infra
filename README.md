@@ -16,4 +16,11 @@ It's in the cloud.
 yay -S sops
 ```
 
-Secrets are generally managed by SOPS.
+Secrets are generally managed by SOPS. Encrypted kube configs can be applied
+via:
+
+```bash
+sops -d kube/taqueria-bonjour/secrets.enc.yaml | \
+kubectl --kubeconfig secrets/kube_config_workload.yaml \
+    apply -f -
+```

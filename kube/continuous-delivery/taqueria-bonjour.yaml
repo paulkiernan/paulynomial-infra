@@ -1,0 +1,18 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: taqueria-bonjour
+  annotations:
+    field.cattle.io/description: A radical new concept in food
+  namespace: fleet-default
+spec:
+  branch: main
+  clientSecretName: null
+  paths:
+    - /kube
+  repo: https://github.com/paulkiernan/taqueria-bonjour
+  targets:
+    - clusterSelector:
+        matchLabels:
+          management.cattle.io/cluster-name: c-gzcnw
+type: fleet.cattle.io.gitrepo

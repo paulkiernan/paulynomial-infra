@@ -1,0 +1,18 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: bixi-life
+  annotations:
+    field.cattle.io/description: Experiments with WebGL
+  namespace: fleet-default
+spec:
+  branch: main
+  clientSecretName: null
+  paths:
+    - /k8s
+  repo: https://github.com/paulkiernan/bixi
+  targets:
+    - clusterSelector:
+        matchLabels:
+          management.cattle.io/cluster-name: c-gzcnw
+type: fleet.cattle.io.gitrepo
